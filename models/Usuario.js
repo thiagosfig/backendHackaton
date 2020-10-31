@@ -21,7 +21,7 @@ const UsuarioSchema = mongoose.Schema({
         type: [String]
     },
     Projeto: {
-        type: [{ id: Number, nome: String }]
+        type: [{ id: String, nome: String }]
     },
     horas: {
         type: Number,

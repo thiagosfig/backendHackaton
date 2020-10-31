@@ -45,7 +45,7 @@ router.get('/:id', async (req, res) => {
 //POST (create)
 router.post('/', async (req, res) => {
     const projeto = new Projeto({
-        id: req.body.id,
+        id: Projeto.length + 1,
         nome: req.body.nome,
         tipo: req.body.tipo,
         bolsa: req.body.bolsa,
@@ -82,6 +82,11 @@ router.patch('/:id', async (req, res) => {
 router.delete('/', async (req, res) => {
     try
     {
+        const deletedObjects = await Projeto.deleteMany({
+            id: {
+                $gte: 0
+            }
+        })
         res.send('All objects were removed!')
     }catch(err)
     {

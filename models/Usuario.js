@@ -18,16 +18,15 @@ const UsuarioSchema = mongoose.Schema({
         required: true
     },
     areaInteresse: {
-        type: String,
+        type: [String],
         required: true
     },
     Projeto: {
-        type: String,
-        required: true
+        type: [{ id: Number, nome: String }]
     },
     horas: {
-        type: String,
-        required: true
+        type: Number,
+        min: 0
     } 
 })
 

@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const ProjetoSchema = mongoose.Schema({
     id: {
-        type: String,
+        type: Number,
         required: true
     },
     nome: {
@@ -14,11 +14,12 @@ const ProjetoSchema = mongoose.Schema({
         required: true
     },
     bolsa: {
-        type: String,
-        required: true
+        type: Number,
+        min: 0,
+        default: 0
     },
     area: {
-        type: String,
+        type: [String],
         required: true
     },
     responsavel: {
@@ -26,11 +27,10 @@ const ProjetoSchema = mongoose.Schema({
         required: true
     },
     preRequisitos: {
-        type: String,
-        required: true
+        type: [String]
     },
     horas: {
-        type: String,
+        type: Number,
         required: true
     },
     descricao:{
@@ -38,8 +38,10 @@ const ProjetoSchema = mongoose.Schema({
         required: true
     },
     colaboradores: {
-        type: String,
-        required: true
+        type: [{
+            nome: String,
+            matricula: String
+        }]
     }
 })
 

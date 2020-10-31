@@ -1,10 +1,7 @@
+const { string } = require('joi')
 const mongoose = require('mongoose')
 
 const ProjetoSchema = mongoose.Schema({
-    id: {
-        type: Number,
-        required: true
-    },
     nome: {
         type: String,
         required: true
@@ -12,6 +9,10 @@ const ProjetoSchema = mongoose.Schema({
     tipo: {
         type: String,
         required: true
+    },
+    status: {
+        type: String,
+        default: "Novo"    
     },
     bolsa: {
         type: Number,
@@ -23,7 +24,10 @@ const ProjetoSchema = mongoose.Schema({
         required: true
     },
     responsavel: {
-        type: String,
+        type: {
+            nome: String,
+            matricula: String
+        },
         required: true
     },
     preRequisitos: {
@@ -31,7 +35,8 @@ const ProjetoSchema = mongoose.Schema({
     },
     horas: {
         type: Number,
-        required: true
+        min: 0,
+        default: 0
     },
     descricao:{
         type: String,

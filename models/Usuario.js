@@ -15,18 +15,18 @@ const UsuarioSchema = mongoose.Schema({
     },
     foto: {
         type: String,
-        required: true
+        default: "fotoPadrao.jpg"
     },
     areaInteresse: {
-        type: [String],
-        required: true
+        type: [String]
     },
     Projeto: {
         type: [{ id: Number, nome: String }]
     },
     horas: {
         type: Number,
-        min: 0
+        min: 0,
+        default: 0
     } 
 })
 
